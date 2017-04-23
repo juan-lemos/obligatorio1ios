@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController , UITableViewDataSource, UITableViewDelegate{
 
     @IBOutlet weak var table: UITableView!
     override func viewDidLoad() {
@@ -39,6 +39,24 @@ class MainViewController: UIViewController {
         
         // show the alert
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cellOne = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemViewCellTable
+        cellOne.name.text = Item.recipeeList[indexPath.row].name
+        cellOne.number.text = String(Item.recipeeList[indexPath.row].number)
+        return cellOne
+        
     }
     
       /*

@@ -9,21 +9,23 @@
 /* Begin PBXBuildFile section */
 		8E8E05791EA991D2002EA8FD /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8E05781EA991D2002EA8FD /* MainViewController.swift */; };
 		8EA460401EA827B500A65A78 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA4603F1EA827B500A65A78 /* AppDelegate.swift */; };
-		8EA460421EA827B500A65A78 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA460411EA827B500A65A78 /* ViewController.swift */; };
 		8EA460451EA827B500A65A78 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EA460431EA827B500A65A78 /* Main.storyboard */; };
 		8EA460471EA827B500A65A78 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EA460461EA827B500A65A78 /* Assets.xcassets */; };
 		8EA4604A1EA827B500A65A78 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EA460481EA827B500A65A78 /* LaunchScreen.storyboard */; };
+		EB33BE891EACE95E00F67898 /* ItemViewCellTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB33BE881EACE95E00F67898 /* ItemViewCellTable.swift */; };
+		EB33BE8F1EACEB3800F67898 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB33BE8E1EACEB3800F67898 /* Item.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8E8E05781EA991D2002EA8FD /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		8EA4603C1EA827B500A65A78 /* obligatorio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = obligatorio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EA4603F1EA827B500A65A78 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8EA460411EA827B500A65A78 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8EA460441EA827B500A65A78 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8EA460461EA827B500A65A78 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8EA460491EA827B500A65A78 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8EA4604B1EA827B500A65A78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EB33BE881EACE95E00F67898 /* ItemViewCellTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemViewCellTable.swift; sourceTree = "<group>"; };
+		EB33BE8E1EACEB3800F67898 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,12 +59,13 @@
 			isa = PBXGroup;
 			children = (
 				8EA4603F1EA827B500A65A78 /* AppDelegate.swift */,
-				8EA460411EA827B500A65A78 /* ViewController.swift */,
 				8EA460431EA827B500A65A78 /* Main.storyboard */,
 				8EA460461EA827B500A65A78 /* Assets.xcassets */,
 				8EA460481EA827B500A65A78 /* LaunchScreen.storyboard */,
 				8EA4604B1EA827B500A65A78 /* Info.plist */,
 				8E8E05781EA991D2002EA8FD /* MainViewController.swift */,
+				EB33BE881EACE95E00F67898 /* ItemViewCellTable.swift */,
+				EB33BE8E1EACEB3800F67898 /* Item.swift */,
 			);
 			path = obligatorio;
 			sourceTree = "<group>";
@@ -139,9 +142,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB33BE8F1EACEB3800F67898 /* Item.swift in Sources */,
 				8E8E05791EA991D2002EA8FD /* MainViewController.swift in Sources */,
-				8EA460421EA827B500A65A78 /* ViewController.swift in Sources */,
 				8EA460401EA827B500A65A78 /* AppDelegate.swift in Sources */,
+				EB33BE891EACE95E00F67898 /* ItemViewCellTable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
