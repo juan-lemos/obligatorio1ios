@@ -43,7 +43,6 @@ class MainViewController: UIViewController , UITableViewDataSource, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        table.setEditing(false, animated: true)
         
         // Do any additional setup after loading the view.
     }
