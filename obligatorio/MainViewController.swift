@@ -20,16 +20,7 @@ class MainViewController: UIViewController , UITableViewDataSource, UITableViewD
         table.reloadData()
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    
     
     @IBAction func confirmDelete(_ sender: Any) {
         
@@ -50,6 +41,17 @@ class MainViewController: UIViewController , UITableViewDataSource, UITableViewD
         self.present(alert, animated: true, completion: nil)
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        table.setEditing(false, animated: true)
+        
+        // Do any additional setup after loading the view.
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -70,9 +72,6 @@ class MainViewController: UIViewController , UITableViewDataSource, UITableViewD
         
     }
     
-    
-    
-    
     func giveColorFromBool(_ state: Bool)->UIColor{
         if(state){
             return UIColor.init(red: 0.2, green: 0.5, blue: 0.1, alpha: 1.0)
@@ -82,7 +81,22 @@ class MainViewController: UIViewController , UITableViewDataSource, UITableViewD
         
     }
     
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
     
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let deleteAction = UITableViewRowAction(style: .default, title: "Delete",
+                                                handler: { (action , indexPath) -> Void in
+            
+            ///button action
+        })
+        
+        // You can set its properties like normal button
+        deleteAction.backgroundColor = UIColor.red
+        
+        return [deleteAction]
+    }
     
       /*
     // MARK: - Navigation
