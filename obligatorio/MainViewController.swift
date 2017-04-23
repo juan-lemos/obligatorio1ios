@@ -4,7 +4,23 @@
 //
 //  Created by SP 25 on 20/4/17.
 //  Copyright © 2017 Apple Inc. All rights reserved.
+
+//DELETE BUTTON ON SWIPE
+//http://stackoverflow.com/questions/3309484/uitableviewcell-show-delete-button-on-swipe <--- THIS ONE
+//http://stackoverflow.com/questions/8983094/how-to-enable-swipe-to-delete-cell-in-a-tableview
 //
+
+//IDENTIFY BUTTON CELL NUMBER
+//http://stackoverflow.com/questions/28894765/ios-swift-button-action-in-table-view-cell <---
+//the only thing i use was myButton.tag = indexPath.row
+//http://stackoverflow.com/questions/35637041/how-does-uibutton-addtarget-self-work
+
+
+//save data on storage 
+//complete tutorial https://developer.apple.com/library/content/referencelibrary/GettingStarted/DevelopiOSAppsSwift/PersistData.html
+//simple http://stackoverflow.com/questions/36948323/swift-persistent-storage
+//a bit more elaborated http://stackoverflow.com/questions/26233067/simple-persistent-storage-in-swift
+
 
 import UIKit
 
@@ -97,14 +113,6 @@ class MainViewController: UIViewController , UITableViewDataSource, UITableViewD
         return [deleteAction]
     }
     
-      /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
