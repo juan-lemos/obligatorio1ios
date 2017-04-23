@@ -14,6 +14,11 @@ class ItemViewCellTable: UITableViewCell {
     
     @IBOutlet weak var number: UILabel!
     
+    @IBOutlet weak var checkButton: UIButton!
+    
+    
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -25,4 +30,7 @@ class ItemViewCellTable: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    
+    
+    
 }

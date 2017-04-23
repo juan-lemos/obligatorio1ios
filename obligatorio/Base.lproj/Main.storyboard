@@ -84,10 +84,10 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8UT-B0-VfS">
-                                                    <rect key="frame" x="67" y="0.0" width="300" height="49.5"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8UT-B0-VfS">
+                                                    <rect key="frame" x="53" y="0.0" width="314" height="49.5"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EGG-Vn-rpp" userLabel="NameCell">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EGG-Vn-rpp" userLabel="NameCell">
                                                             <rect key="frame" x="0.0" y="0.0" width="300" height="19"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="19" id="LI8-nt-MMt"/>
@@ -97,7 +97,7 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YM1-6M-UK9" userLabel="NumberCell">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YM1-6M-UK9" userLabel="NumberCell">
                                                             <rect key="frame" x="0.0" y="19" width="300" height="21"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="21" id="Nps-st-xdz"/>
@@ -115,22 +115,29 @@
                                                         <constraint firstItem="YM1-6M-UK9" firstAttribute="top" secondItem="EGG-Vn-rpp" secondAttribute="bottom" id="xCS-82-8Bw"/>
                                                     </constraints>
                                                 </view>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LU1-q9-4tn">
-                                                    <rect key="frame" x="13" y="-1" width="46" height="42"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LU1-q9-4tn" userLabel="CheckButton">
+                                                    <rect key="frame" x="13" y="0.0" width="40" height="49.5"/>
                                                     <color key="backgroundColor" red="0.13340712178006539" green="0.14117647059999999" blue="0.056749674527580174" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="48"/>
                                                     <state key="normal" title="✓"/>
+                                                    <connections>
+                                                        <action selector="checkButtonAction:" destination="4PB-FT-VJw" eventType="touchUpInside" id="SAx-VZ-fM6"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="LU1-q9-4tn" firstAttribute="centerY" secondItem="xEw-L8-KxS" secondAttribute="centerY" id="CGZ-GT-l76"/>
+                                                <constraint firstItem="LU1-q9-4tn" firstAttribute="height" secondItem="xEw-L8-KxS" secondAttribute="height" id="JCn-dL-JdM"/>
+                                                <constraint firstItem="LU1-q9-4tn" firstAttribute="leading" secondItem="xEw-L8-KxS" secondAttribute="leadingMargin" constant="5" id="K8p-Aq-yHj"/>
                                                 <constraint firstItem="8UT-B0-VfS" firstAttribute="height" secondItem="xEw-L8-KxS" secondAttribute="height" id="PG0-za-i8R"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="8UT-B0-VfS" secondAttribute="trailing" id="Z4y-ce-ndI"/>
                                                 <constraint firstItem="8UT-B0-VfS" firstAttribute="centerY" secondItem="xEw-L8-KxS" secondAttribute="centerY" id="aMg-xT-eMA"/>
+                                                <constraint firstItem="8UT-B0-VfS" firstAttribute="leading" secondItem="LU1-q9-4tn" secondAttribute="trailing" id="mAm-uV-WXi"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
+                                            <outlet property="checkButton" destination="LU1-q9-4tn" id="N3L-Fw-vLo"/>
                                             <outlet property="name" destination="EGG-Vn-rpp" id="7HE-8t-bb7"/>
                                             <outlet property="number" destination="YM1-6M-UK9" id="D2l-dc-ur2"/>
                                         </connections>

@@ -11,6 +11,14 @@ import UIKit
 class MainViewController: UIViewController , UITableViewDataSource, UITableViewDelegate{
 
     @IBOutlet weak var table: UITableView!
+    
+    
+    
+    
+    @IBAction func checkButtonAction(_ sender: UIButton) {
+        Item.recipeeList[sender.tag].state = !Item.recipeeList[sender.tag].state
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -55,9 +63,25 @@ class MainViewController: UIViewController , UITableViewDataSource, UITableViewD
         let cellOne = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemViewCellTable
         cellOne.name.text = Item.recipeeList[indexPath.row].name
         cellOne.number.text = String(Item.recipeeList[indexPath.row].number)
+        cellOne.checkButton.tintColor = giveColorFromBool (Item.recipeeList[indexPath.row].state)
+        cellOne.checkButton.tag=indexPath.row
         return cellOne
         
     }
+    
+    
+    
+    
+    func giveColorFromBool(_ state: Bool)->UIColor{
+        if(state){
+            return UIColor.init(red: 0.2, green: 0.5, blue: 0.1, alpha: 1.0)
+        }else{
+            return UIColor.init(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        }
+        
+    }
+    
+    
     
       /*
     // MARK: - Navigation

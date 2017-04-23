@@ -11,13 +11,15 @@ import UIKit
 class Item {
     var name : String
     var number : Int64
+    var state: Bool
     
-    init(name : String, number : Int64){
+    init(name : String, number : Int64, state : Bool){
         self.name = name
         self.number = number
+        self.state = state
     }
     
-    static var recipeeList : [Item] = [Item(name:"Hamburguesa",number:2), Item(name:"Hamburguesa",number:2)]
+    static var recipeeList : [Item] = [Item(name:"Hamburguesa",number:2, state:true), Item(name:"Hamburguesa",number:2,state : false)]
     
     
 }
