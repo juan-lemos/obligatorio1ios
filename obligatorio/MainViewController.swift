@@ -17,6 +17,7 @@ class MainViewController: UIViewController , UITableViewDataSource, UITableViewD
     
     @IBAction func checkButtonAction(_ sender: UIButton) {
         Item.recipeeList[sender.tag].state = !Item.recipeeList[sender.tag].state
+        table.reloadData()
     }
     
     override func viewDidLoad() {
@@ -56,7 +57,7 @@ class MainViewController: UIViewController , UITableViewDataSource, UITableViewD
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return Item.recipeeList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -19,7 +19,30 @@ class Item {
         self.state = state
     }
     
-    static var recipeeList : [Item] = [Item(name:"Hamburguesa",number:2, state:true), Item(name:"Hamburguesa",number:2,state : false)]
+    static var recipeeList : [Item] = [Item(name:"Hamburguesa",number:2, state:true),
+                                       Item(name:"Hamburguesa",number:2,state : false),
+                                       Item(name:"Hamburguesa",number:2,state : false),
+                                       Item(name:"Hamburguesa",number:2,state : false),
+                                       Item(name:"Hamburguesa",number:2,state : false),
+                                       Item(name:"Hamburguesa",number:2,state : false),
+                                       Item(name:"Hamburguesa",number:2,state : false),
+                                       Item(name:"Hamburguesa",number:2,state : false),
+                                       Item(name:"Hamburguesa",number:2,state : false),
+                                       Item(name:"Hamburguesa",number:2,state : false),
+                                       Item(name:"Hamburguesa",number:2,state : false),
+                                       Item(name:"Hamburguesa",number:2,state : false),
+                                       Item(name:"Hamburguesa",number:2,state : false),
+                                       Item(name:"Hamburguesa",number:2,state : false),
+                                       Item(name:"Hamburguesa",number:2,state : false),
+                                       Item(name:"Hamburguesa",number:2,state : false),
+                                       Item(name:"Hamburguesa",number:2,state : false),
+                                       Item(name:"Hamburguesa",number:2,state : false),
+                                       Item(name:"Hamburguesa",number:2,state : false),
+                                       Item(name:"Hamburguesa",number:2,state : false),
+                                       Item(name:"Hamburguesa",number:2,state : false),
+                                       Item(name:"Hamburguesa",number:2,state : false),
+                                       Item(name:"Hamburguesa",number:2,state : false),
+                                       Item(name:"Hamburguesa",number:2,state : false)]
     
     
 }
