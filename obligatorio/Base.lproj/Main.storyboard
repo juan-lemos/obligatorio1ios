@@ -84,13 +84,10 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wcd-Qq-Sc2">
-                                                    <rect key="frame" x="8" y="9.5" width="51" height="31"/>
-                                                </switch>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8UT-B0-VfS">
+                                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8UT-B0-VfS">
                                                     <rect key="frame" x="67" y="0.0" width="300" height="49.5"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EGG-Vn-rpp" userLabel="NameCell">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EGG-Vn-rpp" userLabel="NameCell">
                                                             <rect key="frame" x="0.0" y="0.0" width="300" height="19"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="19" id="LI8-nt-MMt"/>
@@ -100,7 +97,7 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YM1-6M-UK9" userLabel="NumberCell">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YM1-6M-UK9" userLabel="NumberCell">
                                                             <rect key="frame" x="0.0" y="19" width="300" height="21"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="21" id="Nps-st-xdz"/>
@@ -118,14 +115,18 @@
                                                         <constraint firstItem="YM1-6M-UK9" firstAttribute="top" secondItem="EGG-Vn-rpp" secondAttribute="bottom" id="xCS-82-8Bw"/>
                                                     </constraints>
                                                 </view>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LU1-q9-4tn">
+                                                    <rect key="frame" x="13" y="-1" width="46" height="42"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" red="0.13340712178006539" green="0.14117647059999999" blue="0.056749674527580174" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="48"/>
+                                                    <state key="normal" title="✓"/>
+                                                </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="wcd-Qq-Sc2" firstAttribute="leading" secondItem="xEw-L8-KxS" secondAttribute="leadingMargin" id="AwC-5X-uvI"/>
-                                                <constraint firstItem="8UT-B0-VfS" firstAttribute="leading" secondItem="wcd-Qq-Sc2" secondAttribute="trailing" constant="10" id="K5K-eI-Ybx"/>
                                                 <constraint firstItem="8UT-B0-VfS" firstAttribute="height" secondItem="xEw-L8-KxS" secondAttribute="height" id="PG0-za-i8R"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="8UT-B0-VfS" secondAttribute="trailing" id="Z4y-ce-ndI"/>
                                                 <constraint firstItem="8UT-B0-VfS" firstAttribute="centerY" secondItem="xEw-L8-KxS" secondAttribute="centerY" id="aMg-xT-eMA"/>
-                                                <constraint firstItem="wcd-Qq-Sc2" firstAttribute="centerY" secondItem="xEw-L8-KxS" secondAttribute="centerY" id="chX-5q-Rrf"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
