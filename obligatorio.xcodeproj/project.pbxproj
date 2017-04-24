@@ -14,6 +14,7 @@
 		8EA4604A1EA827B500A65A78 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EA460481EA827B500A65A78 /* LaunchScreen.storyboard */; };
 		EB33BE891EACE95E00F67898 /* ItemViewCellTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB33BE881EACE95E00F67898 /* ItemViewCellTable.swift */; };
 		EB33BE8F1EACEB3800F67898 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB33BE8E1EACEB3800F67898 /* Item.swift */; };
+		EB8FA2111EAD82A1008DB7B0 /* ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8FA2101EAD82A1008DB7B0 /* ItemViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		8EA4604B1EA827B500A65A78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EB33BE881EACE95E00F67898 /* ItemViewCellTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemViewCellTable.swift; sourceTree = "<group>"; };
 		EB33BE8E1EACEB3800F67898 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		EB8FA2101EAD82A1008DB7B0 /* ItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				8E8E05781EA991D2002EA8FD /* MainViewController.swift */,
 				EB33BE881EACE95E00F67898 /* ItemViewCellTable.swift */,
 				EB33BE8E1EACEB3800F67898 /* Item.swift */,
+				EB8FA2101EAD82A1008DB7B0 /* ItemViewController.swift */,
 			);
 			path = obligatorio;
 			sourceTree = "<group>";
@@ -144,6 +147,7 @@
 			files = (
 				EB33BE8F1EACEB3800F67898 /* Item.swift in Sources */,
 				8E8E05791EA991D2002EA8FD /* MainViewController.swift in Sources */,
+				EB8FA2111EAD82A1008DB7B0 /* ItemViewController.swift in Sources */,
 				8EA460401EA827B500A65A78 /* AppDelegate.swift in Sources */,
 				EB33BE891EACE95E00F67898 /* ItemViewCellTable.swift in Sources */,
 			);

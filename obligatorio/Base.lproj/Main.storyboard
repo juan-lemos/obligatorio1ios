@@ -40,6 +40,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qth-aT-50H">
+                                <rect key="frame" x="139" y="318" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LZP-NN-XYA">
                                 <rect key="frame" x="117.5" y="289.5" width="140" height="88"/>
                                 <subviews>
@@ -182,7 +189,7 @@
         <!--Add item-->
         <scene sceneID="uFS-Oe-PoA">
             <objects>
-                <viewController id="1fj-8K-1Wl" sceneMemberID="viewController">
+                <viewController id="1fj-8K-1Wl" customClass="ItemViewController" customModule="obligatorio" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fRp-TO-l73"/>
                         <viewControllerLayoutGuide type="bottom" id="8Zh-iU-3ua"/>
@@ -204,8 +211,20 @@
                                         <rect key="frame" x="0.0" y="70" width="112.5" height="30"/>
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                        <textInputTraits key="textInputTraits"/>
                                     </textField>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KwY-yq-tyN">
+                                        <rect key="frame" x="64" y="187" width="240" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vjd-yN-ub0">
+                                        <rect key="frame" x="179" y="406" width="46" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="btnClicked:" destination="1fj-8K-1Wl" eventType="touchUpInside" id="duA-ue-A0u"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="eqb-gD-Mf6" firstAttribute="top" secondItem="vHd-5T-an7" secondAttribute="bottom" constant="40" id="86Q-sr-d1e"/>
@@ -228,6 +247,10 @@
                     <navigationItem key="navigationItem" title="Add item" id="PNb-2S-TAq">
                         <barButtonItem key="rightBarButtonItem" title="Done" id="gf8-0i-MgP"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="chooseButton" destination="Vjd-yN-ub0" id="9o8-Bx-oBL"/>
+                        <outlet property="imageView" destination="KwY-yq-tyN" id="RIM-Nt-ehR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UVu-Fe-F4t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
