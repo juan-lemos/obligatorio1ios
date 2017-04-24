@@ -22,6 +22,12 @@
 //a bit more elaborated http://stackoverflow.com/questions/26233067/simple-persistent-storage-in-swift
 
 
+//add image from gallery
+//http://stackoverflow.com/questions/30323206/setting-the-image-taken-from-the-gallery-to-the-uiimageview<-- with something from here
+//http://stackoverflow.com/questions/25510081/how-to-allow-user-to-pick-the-image-with-swift<-- THIS ONE
+//https://makeapppie.com/2016/06/28/how-to-use-uiimagepickercontroller-for-a-camera-and-photo-library-in-swift-3-0/ <--- nice tutorial for camera and gallery
+//
+
 import UIKit
 
 class MainViewController: UIViewController , UITableViewDataSource, UITableViewDelegate{

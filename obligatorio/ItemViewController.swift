@@ -1,4 +1,6 @@
 import UIKit
+//pages
+
 
 
 class ItemViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
