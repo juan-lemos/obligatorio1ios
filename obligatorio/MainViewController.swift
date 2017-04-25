@@ -28,6 +28,19 @@
 //https://makeapppie.com/2016/06/28/how-to-use-uiimagepickercontroller-for-a-camera-and-photo-library-in-swift-3-0/ <--- nice tutorial for camera and gallery
 //
 
+
+//HIDE KEYBOARD
+//http://stackoverflow.com/questions/24126678/close-ios-keyboard-by-touching-anywhere-using-swift
+
+//MOVE VIEW WHEN KEYBOARD APPEARS
+//http://stackoverflow.com/questions/26070242/move-view-with-keyboard-using-swift
+//https://github.com/codebeaulieu/KeyboardViewController
+
+//DONE BUTTON ON KEYBOARD NUMBER 
+//http://stackoverflow.com/a/38582482
+
+
+
 import UIKit
 
 class MainViewController: UIViewController , UITableViewDataSource, UITableViewDelegate{
