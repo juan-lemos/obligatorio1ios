@@ -19,7 +19,22 @@ class Item {
         self.state = state
     }
     
-    static var recipeeList : [Item] = [Item(name:"Hamburguesa",number:2, state:true), Item(name:"Hamburguesa",number:2,state : false)]
+    func toDictionary()-> [String : String] {
+        var dic = [String : String]()
+        
+        dic ["name"] = name
+        dic ["number"] = String(number)
+        if (state){
+            dic ["state"] = "True"
+        }
+        else {
+            dic ["state"] = "False"
+        }
+    return dic
+    }
+    
+    
+    //static var recipeeList : [Item] = [Item(name:"Hamburguesa",number:2, state:true), Item(name:"Hamburguesa",number:2,state : false)]
     
     
 }
