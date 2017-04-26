@@ -1,11 +1,3 @@
-//
-//  MainViewController.swift
-//  obligatorio
-//
-//  Created by SP 25 on 20/4/17.
-//  Copyright © 2017 Apple Inc. All rights reserved.
-//
-
 import UIKit
 
 class MainViewController: UIViewController , UITableViewDataSource, UITableViewDelegate{
@@ -35,7 +27,6 @@ class MainViewController: UIViewController , UITableViewDataSource, UITableViewD
         // add the actions (buttons)
         alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: { action in
             
-            // do something like...
             self.table.alpha = 0
             self.table.isHidden = true
             //TODO: send delete list from storage
@@ -82,14 +73,15 @@ class MainViewController: UIViewController , UITableViewDataSource, UITableViewD
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let deleteAction = UITableViewRowAction(style: .default, title: "Delete",
                                                 handler: { (action , indexPath) -> Void in
-                                                    
+                                                    //TODO: delete from storage
                                                     Item.recipeeList.remove(at : indexPath.row)
-                                                    self.table.reloadData()
+                                                    //animate update tableview
+                                                    let range = NSMakeRange(0, self.table.numberOfSections)
+                                                    let sections = NSIndexSet(indexesIn: range)
+                                                    self.table.reloadSections(sections as IndexSet, with: .automatic)
         })
-        
-        // You can set its properties like normal button
+        // Delete button properties
         deleteAction.backgroundColor = UIColor.red
-        
         return [deleteAction]
     }
     
