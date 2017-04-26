@@ -6,7 +6,7 @@ class MainViewController: UIViewController , UITableViewDataSource, UITableViewD
     
     @IBAction func checkButtonAction(_ sender: UIButton) {
         Item.recipeeList[sender.tag].state = !Item.recipeeList[sender.tag].state
-        table.reloadData()
+        animateUpdateTable()
     }
     
     override func viewDidLoad() {
@@ -75,15 +75,23 @@ class MainViewController: UIViewController , UITableViewDataSource, UITableViewD
                                                 handler: { (action , indexPath) -> Void in
                                                     //TODO: delete from storage
                                                     Item.recipeeList.remove(at : indexPath.row)
-                                                    //animate update tableview
-                                                    let range = NSMakeRange(0, self.table.numberOfSections)
-                                                    let sections = NSIndexSet(indexesIn: range)
-                                                    self.table.reloadSections(sections as IndexSet, with: .automatic)
+                                                    self.animateUpdateTable()
+                                                    
         })
         // Delete button properties
         deleteAction.backgroundColor = UIColor.red
         return [deleteAction]
     }
+    
+    
+    func animateUpdateTable(){
+        let range = NSMakeRange(0, self.table.numberOfSections)
+        let sections = NSIndexSet(indexesIn: range)
+        self.table.reloadSections(sections as IndexSet, with: .automatic)
+    
+    }
+    
+    
     
     
       /*
