@@ -12,11 +12,9 @@ class MainViewController: UIViewController , UITableViewDataSource, UITableViewD
 
     @IBOutlet weak var table: UITableView!
     
-    
-    
-    
     @IBAction func checkButtonAction(_ sender: UIButton) {
         Item.recipeeList[sender.tag].state = !Item.recipeeList[sender.tag].state
+        table.reloadData()
     }
     
     override func viewDidLoad() {
@@ -56,7 +54,7 @@ class MainViewController: UIViewController , UITableViewDataSource, UITableViewD
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return Item.recipeeList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -81,6 +79,19 @@ class MainViewController: UIViewController , UITableViewDataSource, UITableViewD
         
     }
     
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let deleteAction = UITableViewRowAction(style: .default, title: "Delete",
+                                                handler: { (action , indexPath) -> Void in
+                                                    
+                                                    Item.recipeeList.remove(at : indexPath.row)
+                                                    self.table.reloadData()
+        })
+        
+        // You can set its properties like normal button
+        deleteAction.backgroundColor = UIColor.red
+        
+        return [deleteAction]
+    }
     
     
       /*
