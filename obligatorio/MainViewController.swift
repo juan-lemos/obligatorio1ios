@@ -13,12 +13,19 @@ class MainViewController: UIViewController , UITableViewDataSource, UITableViewD
     @IBOutlet weak var table: UITableView!
     
     @IBAction func checkButtonAction(_ sender: UIButton) {
-        Item.recipeeList[sender.tag].state = !Item.recipeeList[sender.tag].state
-        table.reloadData()
+        ModelManager.shared.itemsList[sender.tag].state = !ModelManager.shared.itemsList[sender.tag].state
+        animateUpdateTable()
+        initPage()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        initPage()
+        animateUpdateTable()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
 
         // Do any additional setup after loading the view.
     }
@@ -34,12 +41,8 @@ class MainViewController: UIViewController , UITableViewDataSource, UITableViewD
         
         // add the actions (buttons)
         alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: { action in
-            
-            // do something like...
-            self.table.alpha = 0
-            self.table.isHidden = true
-            //TODO: send delete list from storage
-            
+            ModelManager.shared.itemsList.removeAll()
+            self.initPage()
         }))
         alert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.cancel, handler: nil))
         
@@ -54,19 +57,18 @@ class MainViewController: UIViewController , UITableViewDataSource, UITableViewD
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Item.recipeeList.count
+        return ModelManager.shared.itemsList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellOne = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemViewCellTable
-        cellOne.name.text = Item.recipeeList[indexPath.row].name
-        cellOne.number.text = String(Item.recipeeList[indexPath.row].number)
-        cellOne.checkButton.tintColor = giveColorFromBool (Item.recipeeList[indexPath.row].state)
+        cellOne.name.text = ModelManager.shared.itemsList[indexPath.row].name
+        cellOne.number.text = String(ModelManager.shared.itemsList[indexPath.row].number)
+        cellOne.checkButton.tintColor = giveColorFromBool (ModelManager.shared.itemsList[indexPath.row].state)
         cellOne.checkButton.tag=indexPath.row
         return cellOne
         
     }
-    
     
     
     
@@ -83,8 +85,9 @@ class MainViewController: UIViewController , UITableViewDataSource, UITableViewD
         let deleteAction = UITableViewRowAction(style: .default, title: "Delete",
                                                 handler: { (action , indexPath) -> Void in
                                                     
-                                                    Item.recipeeList.remove(at : indexPath.row)
-                                                    self.table.reloadData()
+                                                    ModelManager.shared.itemsList.remove(at : indexPath.row)
+                                                    self.animateUpdateTable()
+                                                    self.initPage()
         })
         
         // You can set its properties like normal button
@@ -93,7 +96,22 @@ class MainViewController: UIViewController , UITableViewDataSource, UITableViewD
         return [deleteAction]
     }
     
+    func animateUpdateTable(){
+        let range = NSMakeRange(0, self.table.numberOfSections)
+        let sections = NSIndexSet(indexesIn: range)
+        self.table.reloadSections(sections as IndexSet, with: .automatic)
+        
+    }
     
+    func initPage(){
+        if (ModelManager.shared.itemsList.count == 0){
+            self.table.alpha = 0
+            self.table.isHidden = true
+        }else{
+            self.table.alpha = 1
+            self.table.isHidden = false
+        }
+    }
       /*
     // MARK: - Navigation
 

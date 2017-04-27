@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="5AB-HH-BJr">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="5AB-HH-BJr">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -81,7 +81,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VTY-AE-j75" id="xEw-L8-KxS">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8UT-B0-VfS">
@@ -182,7 +182,7 @@
         <!--Add item-->
         <scene sceneID="uFS-Oe-PoA">
             <objects>
-                <viewController id="1fj-8K-1Wl" sceneMemberID="viewController">
+                <viewController id="1fj-8K-1Wl" customClass="AddItemViewController" customModule="obligatorio" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fRp-TO-l73"/>
                         <viewControllerLayoutGuide type="bottom" id="8Zh-iU-3ua"/>
@@ -226,8 +226,16 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Add item" id="PNb-2S-TAq">
-                        <barButtonItem key="rightBarButtonItem" title="Done" id="gf8-0i-MgP"/>
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="gf8-0i-MgP">
+                            <connections>
+                                <action selector="doneButtonAction:" destination="1fj-8K-1Wl" id="OPl-ya-LrQ"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="productName" destination="vHd-5T-an7" id="uCe-4q-YYN"/>
+                        <outlet property="productQuantity" destination="eqb-gD-Mf6" id="8Ns-U4-FP2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UVu-Fe-F4t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -19,12 +19,12 @@ class Item {
         self.state = state
     }
     
-    func toDictionary()-> [String : String] {
+    public static func toDictionary(_ item:Item)-> [String : String] {
         var dic = [String : String]()
         
-        dic ["name"] = name
-        dic ["number"] = String(number)
-        if (state){
+        dic ["name"] = item.name
+        dic ["number"] = String(item.number)
+        if (item.state){
             dic ["state"] = "True"
         }
         else {
@@ -33,8 +33,17 @@ class Item {
     return dic
     }
     
-    
-    static var recipeeList : [Item] = [Item(name:"Hamburguesa",number:2, state:true), Item(name:"Hamburguesa",number:2,state : false)]
-    
-    
+    public static func toItem(_ dic:[String : String])->Item{
+        
+        let name = dic["name"]
+        let number = dic["number"]
+        let state:Bool
+        if(dic["state"] == "True"){
+            state = true
+        }else{
+            state = false
+        }
+        return Item(name: name!,number: Int64(number!)!,state: state)
+    }
+ 
 }
