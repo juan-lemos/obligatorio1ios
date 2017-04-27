@@ -9,27 +9,29 @@
 import UIKit
 
 class MainViewController: UIViewController , UITableViewDataSource, UITableViewDelegate{
-
+    
     @IBOutlet weak var table: UITableView!
+    var oldAlpha : Int = min (1,ModelManager.shared.itemsList.count)
+    
     
     @IBAction func checkButtonAction(_ sender: UIButton) {
         ModelManager.shared.itemsList[sender.tag].state = !ModelManager.shared.itemsList[sender.tag].state
-        animateUpdateTable()
         initPage()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         initPage()
-        animateUpdateTable()
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-
+        
+        
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -86,8 +88,9 @@ class MainViewController: UIViewController , UITableViewDataSource, UITableViewD
                                                 handler: { (action , indexPath) -> Void in
                                                     
                                                     ModelManager.shared.itemsList.remove(at : indexPath.row)
-                                                    self.animateUpdateTable()
                                                     self.initPage()
+                                                    
+                                                    
         })
         
         // You can set its properties like normal button
@@ -103,23 +106,47 @@ class MainViewController: UIViewController , UITableViewDataSource, UITableViewD
         
     }
     
+    
+    @IBOutlet weak var textsView: UIView!
+    
     func initPage(){
         if (ModelManager.shared.itemsList.count == 0){
-            self.table.alpha = 0
+            UIView.animateKeyframes(withDuration: 3.0, delay: 0.0, options: [], animations: {
+                UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 1, animations: {
+                    self.table.alpha = 0
+                    self.textsView.alpha=1
+                })
+                
+            }, completion: {com in
+                //codigo que quiero hacer cuando termine
+            })
             self.table.isHidden = true
+            self.oldAlpha=0
         }else{
-            self.table.alpha = 1
-            self.table.isHidden = false
+            if (oldAlpha==0){
+                UIView.animateKeyframes(withDuration: 3.0, delay: 0.0, options: [], animations: {
+                    UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 1, animations: {
+                        self.table.alpha = 1
+                        self.textsView.alpha=0
+                    })
+                    
+                }, completion: {com in
+                    //codigo que quiero hacer cuando termine
+                })
+                self.table.isHidden = false
+                self.oldAlpha=1
+            }
         }
+        animateUpdateTable()
     }
-      /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

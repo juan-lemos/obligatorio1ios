@@ -30,6 +30,7 @@ class AddItemViewController: UIViewController {
         if let quantity = Int(productQuantity.text ?? "") {
             let quantityInt64 = Int64(quantity)
             ModelManager.shared.itemsList.append(Item(name : productName.text!, number : quantityInt64, state : false))
+             performSegue(withIdentifier: "MainViewController", sender: self)
         }else{
             let alert = UIAlertController(title: "Error", message: "Only numbers allow.", preferredStyle: UIAlertControllerStyle.alert)
             
@@ -37,6 +38,8 @@ class AddItemViewController: UIViewController {
             
             // show the alert
             self.present(alert, animated: true, completion: nil)
+            
+            
         
         }
         
