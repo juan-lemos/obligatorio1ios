@@ -107,7 +107,7 @@ class MainViewController: UIViewController , UITableViewDataSource, UITableViewD
         let range = NSMakeRange(0, self.table.numberOfSections)
         let sections = NSIndexSet(indexesIn: range)
         self.table.reloadSections(sections as IndexSet, with: .automatic)
-        
+    
     }
     
     func initPage(){
