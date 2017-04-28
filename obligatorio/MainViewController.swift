@@ -5,6 +5,9 @@
 //  Created by SP 25 on 20/4/17.
 //  Copyright © 2017 Apple Inc. All rights reserved.
 //
+//change app name
+//http://stackoverflow.com/a/34752653
+
 
 import UIKit
 
