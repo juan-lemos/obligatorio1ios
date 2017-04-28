@@ -9,43 +9,52 @@
 import UIKit
 
 class MainViewController: UIViewController , UITableViewDataSource, UITableViewDelegate{
-
+    
     @IBOutlet weak var table: UITableView!
+    
+    @IBOutlet weak var textsView: UIView!
+    
+    
     
     @IBAction func checkButtonAction(_ sender: UIButton) {
         ModelManager.shared.itemsList[sender.tag].state = !ModelManager.shared.itemsList[sender.tag].state
-        animateUpdateTable()
         initPage()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        initPage()
-        animateUpdateTable()
+            initPage()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-
-        // Do any additional setup after loading the view.
+        
+        if (ModelManager.shared.itemsList.count == 0){
+            self.table.alpha = 0
+            self.textsView.alpha=1
+            self.table.isHidden = true
+            self.textsView.isHidden = false
+        }else {
+            self.table.alpha = 1
+            self.textsView.alpha=0
+            self.table.isHidden = false
+            self.textsView.isHidden = true
+        }
+        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     @IBAction func confirmDelete(_ sender: Any) {
-        
         let alert = UIAlertController(title: "Delete list", message: "Are you sure?", preferredStyle: UIAlertControllerStyle.alert)
-        
         // add the actions (buttons)
         alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: { action in
             ModelManager.shared.itemsList.removeAll()
             self.initPage()
         }))
         alert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.cancel, handler: nil))
-        
         // show the alert
         self.present(alert, animated: true, completion: nil)
     }
@@ -71,7 +80,6 @@ class MainViewController: UIViewController , UITableViewDataSource, UITableViewD
     }
     
     
-    
     func giveColorFromBool(_ state: Bool)->UIColor{
         if(state){
             return UIColor.init(red: 0.2, green: 0.5, blue: 0.1, alpha: 1.0)
@@ -86,10 +94,9 @@ class MainViewController: UIViewController , UITableViewDataSource, UITableViewD
                                                 handler: { (action , indexPath) -> Void in
                                                     
                                                     ModelManager.shared.itemsList.remove(at : indexPath.row)
-                                                    self.animateUpdateTable()
+                                                    
                                                     self.initPage()
         })
-        
         // You can set its properties like normal button
         deleteAction.backgroundColor = UIColor.red
         
@@ -104,22 +111,47 @@ class MainViewController: UIViewController , UITableViewDataSource, UITableViewD
     }
     
     func initPage(){
+        animateUpdateTable()
         if (ModelManager.shared.itemsList.count == 0){
-            self.table.alpha = 0
-            self.table.isHidden = true
+            UIView.animateKeyframes(withDuration: 1.0, delay: 0.0, options: [], animations: {
+                UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 1, animations: {
+                    self.table.alpha = 0
+                    self.textsView.alpha=1
+                })
+            }, completion: {com in
+                self.table.isHidden = true
+                self.textsView.isHidden = false
+            })
         }else{
-            self.table.alpha = 1
-            self.table.isHidden = false
+            if (self.table.alpha==0){//if was empty
+                UIView.animateKeyframes(withDuration: 0.8, delay: 0.0, options: [], animations: {
+                    UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 1, animations: {
+                        self.table.alpha = 1
+                        self.textsView.alpha=0
+                    })
+                }, completion: {com in
+                    self.table.isHidden = false
+                    self.textsView.isHidden = true
+                })
+                
+            }
+        }
+        
+    }
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "editElementSegue", sender: indexPath.row)
+        
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let addView = segue.destination as! AddItemViewController
+        if let num = sender as? Int {
+            addView.elementNumber = num
         }
     }
-      /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
+    
 }

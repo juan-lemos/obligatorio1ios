@@ -10,16 +10,23 @@
 import UIKit
 
 class AddItemViewController: UIViewController {
-
+    
+    
+    var elementNumber :Int! = -1
+    
+    
     @IBOutlet weak var productName: UITextField!
     @IBOutlet weak var productQuantity: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        if (elementNumber>=0){
+            productName.text = ModelManager.shared.itemsList[elementNumber].name
+            productQuantity.text = String(ModelManager.shared.itemsList[elementNumber].number)
+        }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -29,7 +36,12 @@ class AddItemViewController: UIViewController {
         
         if let quantity = Int(productQuantity.text ?? "") {
             let quantityInt64 = Int64(quantity)
-            ModelManager.shared.itemsList.append(Item(name : productName.text!, number : quantityInt64, state : false))
+            if (elementNumber>=0){
+                ModelManager.shared.itemsList[elementNumber].name = productName.text!
+                ModelManager.shared.itemsList[elementNumber].number = quantityInt64
+            }else{
+                ModelManager.shared.itemsList.append(Item(name : productName.text!, number : quantityInt64, state : false))
+            }
         }else{
             let alert = UIAlertController(title: "Error", message: "Only numbers allow.", preferredStyle: UIAlertControllerStyle.alert)
             
@@ -37,20 +49,22 @@ class AddItemViewController: UIViewController {
             
             // show the alert
             self.present(alert, animated: true, completion: nil)
-        
+            
         }
         
         
     }
-
+    
+    
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
