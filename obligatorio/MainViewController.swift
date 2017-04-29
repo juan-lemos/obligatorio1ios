@@ -13,9 +13,30 @@ class MainViewController: UIViewController , UITableViewDataSource, UITableViewD
     @IBOutlet weak var table: UITableView!
     
     @IBAction func checkButtonAction(_ sender: UIButton) {
-        ModelManager.shared.itemsList[sender.tag].state = !ModelManager.shared.itemsList[sender.tag].state
+        let newState = !ModelManager.shared.itemsList[sender.tag].state
+        let row = sender.tag
+        ModelManager.shared.updateItemState(newState: newState, atIndex: row)
         animateUpdateTable()
         initPage()
+    }
+    
+    var rowToEdit: Int?
+    
+    // This function is called before the segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        // get a reference to the second view controller
+        let addItemViewController = segue.destination as! AddItemViewController
+        
+        // set a variable in the second view controller with the String to pass
+        
+        if rowToEdit != nil{
+            
+            addItemViewController.productNameEdit = ModelManager.shared.itemsList[rowToEdit!].name
+            addItemViewController.productQuantityEdit = String(ModelManager.shared.itemsList[rowToEdit!].number)
+            addItemViewController.selectedItemRow = rowToEdit
+            rowToEdit = nil
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -90,10 +111,20 @@ class MainViewController: UIViewController , UITableViewDataSource, UITableViewD
                                                     self.initPage()
         })
         
+        
         // You can set its properties like normal button
         deleteAction.backgroundColor = UIColor.red
         
-        return [deleteAction]
+        
+        
+        let editAction = UITableViewRowAction(style: .default, title: "Edit", handler: {(action, indexPath) -> Void in
+            self.rowToEdit = indexPath.row
+            self.performSegue(withIdentifier: "marketToAdd", sender: self)
+        })
+        
+        editAction.backgroundColor = UIColor.green
+        
+        return [deleteAction,editAction]
     }
     
     func animateUpdateTable(){

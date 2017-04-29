@@ -25,6 +25,17 @@ class ModelManager  {
     }
     
     
+    func addItem(item: Item) {
+        itemsList.append(item)
+    }
+    
+    func updateItem(item: Item, atIndex: Int){
+        itemsList[atIndex] = item
+    }
+    
+    func updateItemState(newState: Bool, atIndex: Int){
+        itemsList[atIndex].state = newState
+    }
     
     private  func saveItems( items:[Item]){
         var itemDics : [[String:String]] = [[String:String]]()
