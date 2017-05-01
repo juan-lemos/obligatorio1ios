@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="5AB-HH-BJr">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="5AB-HH-BJr">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -81,7 +81,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VTY-AE-j75" id="xEw-L8-KxS">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8UT-B0-VfS">
@@ -167,18 +167,19 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Add" id="106-Cg-avc">
                             <connections>
-                                <segue destination="1fj-8K-1Wl" kind="show" identifier="editElementSegue" id="pye-Fr-Ium"/>
+                                <segue destination="1fj-8K-1Wl" kind="show" identifier="" id="pye-Fr-Ium"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="table" destination="yhU-VC-JLD" id="388-t6-bY2"/>
                         <outlet property="textsView" destination="LZP-NN-XYA" id="0Ql-94-zYF"/>
+                        <segue destination="1fj-8K-1Wl" kind="show" identifier="marketToAdd" id="N6B-gv-itt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KMx-SP-fJ5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="316" y="139.880059970015"/>
+            <point key="canvasLocation" x="273" y="140"/>
         </scene>
         <!--Add item-->
         <scene sceneID="uFS-Oe-PoA">
@@ -243,4 +244,7 @@
             <point key="canvasLocation" x="1093.5999999999999" y="140.77961019490255"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="N6B-gv-itt"/>
+    </inferredMetricsTieBreakers>
 </document>

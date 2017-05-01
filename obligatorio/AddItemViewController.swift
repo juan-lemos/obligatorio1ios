@@ -37,11 +37,14 @@ class AddItemViewController: UIViewController {
         if let quantity = Int(productQuantity.text ?? "") {
             let quantityInt64 = Int64(quantity)
             if (elementNumber>=0){
-                ModelManager.shared.itemsList[elementNumber].name = productName.text!
-                ModelManager.shared.itemsList[elementNumber].number = quantityInt64
+                let editItem : Item  = ModelManager.shared.itemsList[elementNumber]
+                editItem.name=productName.text!
+                editItem.number=quantityInt64
+                ModelManager.shared.updateItem(item: editItem, atIndex: elementNumber)
             }else{
-                ModelManager.shared.itemsList.append(Item(name : productName.text!, number : quantityInt64, state : false))
+                ModelManager.shared.addItem(item: Item(name : productName.text!, number : quantityInt64, state : false))
             }
+            self.navigationController?.popViewController(animated: true)
         }else{
             let alert = UIAlertController(title: "Error", message: "Only numbers allow.", preferredStyle: UIAlertControllerStyle.alert)
             

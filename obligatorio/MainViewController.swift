@@ -20,7 +20,9 @@ class MainViewController: UIViewController , UITableViewDataSource, UITableViewD
     
     
     @IBAction func checkButtonAction(_ sender: UIButton) {
-        ModelManager.shared.itemsList[sender.tag].state = !ModelManager.shared.itemsList[sender.tag].state
+        let newState = !ModelManager.shared.itemsList[sender.tag].state
+        let row = sender.tag
+        ModelManager.shared.updateItemState(newState: newState, atIndex: row)
         initPage()
     }
     
@@ -54,7 +56,7 @@ class MainViewController: UIViewController , UITableViewDataSource, UITableViewD
         let alert = UIAlertController(title: "Delete list", message: "Are you sure?", preferredStyle: UIAlertControllerStyle.alert)
         // add the actions (buttons)
         alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: { action in
-            ModelManager.shared.itemsList.removeAll()
+            ModelManager.shared.deleteAllItems()
             self.initPage()
         }))
         alert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.cancel, handler: nil))
@@ -85,7 +87,7 @@ class MainViewController: UIViewController , UITableViewDataSource, UITableViewD
     
     func giveColorFromBool(_ state: Bool)->UIColor{
         if(state){
-            return UIColor.init(red: 0.2, green: 0.5, blue: 0.1, alpha: 1.0)
+            return UIColor.init(red: 0.69, green: 0.22, blue: 0, alpha: 1.0)
         }else{
             return UIColor.init(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         }
@@ -97,13 +99,23 @@ class MainViewController: UIViewController , UITableViewDataSource, UITableViewD
                                                 handler: { (action , indexPath) -> Void in
                                                     
                                                     ModelManager.shared.itemsList.remove(at : indexPath.row)
-                                                    
+                                                    self.animateUpdateTable()
                                                     self.initPage()
         })
+        
+        
         // You can set its properties like normal button
         deleteAction.backgroundColor = UIColor.red
         
-        return [deleteAction]
+        
+        
+        let editAction = UITableViewRowAction(style: .default, title: "Edit", handler: {(action, indexPath) -> Void in
+            self.performSegue(withIdentifier: "marketToAdd", sender: indexPath.row)
+        })
+        
+        editAction.backgroundColor = UIColor.green
+        
+        return [editAction,deleteAction]
     }
     
     func animateUpdateTable(){
@@ -115,7 +127,7 @@ class MainViewController: UIViewController , UITableViewDataSource, UITableViewD
     
     func initPage(){
         animateUpdateTable()
-        if (ModelManager.shared.itemsList.count == 0){
+        if (ModelManager.shared.itemsList.count == 0){//if list empty
             UIView.animateKeyframes(withDuration: 1.0, delay: 0.0, options: [], animations: {
                 UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 1, animations: {
                     self.table.alpha = 0
@@ -125,8 +137,8 @@ class MainViewController: UIViewController , UITableViewDataSource, UITableViewD
                 self.table.isHidden = true
                 self.textsView.isHidden = false
             })
-        }else{
-            if (self.table.alpha==0){//if was empty
+        }else{//have elements
+            if (self.table.alpha==0){//if first element in list
                 UIView.animateKeyframes(withDuration: 0.8, delay: 0.0, options: [], animations: {
                     UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 1, animations: {
                         self.table.alpha = 1
@@ -143,10 +155,7 @@ class MainViewController: UIViewController , UITableViewDataSource, UITableViewD
     }
     
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "editElementSegue", sender: indexPath.row)
-        
-    }
+    
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
