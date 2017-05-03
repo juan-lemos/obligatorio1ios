@@ -53,7 +53,7 @@ class AddItemViewController: UIViewController {
             }else{//when create
                 ModelManager.shared.addItem(item: Item(name : productName.text!, number : quantityInt64, state : false))
             }
-            self.navigationController?.popViewController(animated: true)
+            _ = self.navigationController?.popViewController(animated: true)
         }else{
             let alert = UIAlertController(title: "Error", message: "Only numbers allow.", preferredStyle: UIAlertControllerStyle.alert)
             
