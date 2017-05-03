@@ -12,8 +12,8 @@ import UIKit
 class ModelManager  {
     
     var itemsList = [Item]()
-    
-    static let shared = ModelManager()
+    //static because sigleton
+    static let shared = ModelManager() //is only call when is null LEAZY LOAD
     
     init() {
         itemsList = getItems()
@@ -21,7 +21,6 @@ class ModelManager  {
     
     func save() {
         saveItems(items: itemsList)
-        
     }
     
     
@@ -41,6 +40,7 @@ class ModelManager  {
         itemsList.removeAll()
     }
     
+    //save all items into in a dictionary in dictionary format
     private  func saveItems( items:[Item]){
         var itemDics : [[String:String]] = [[String:String]]()
         for item in items{
@@ -49,6 +49,7 @@ class ModelManager  {
         saveItemsDic(itemDics)
     }
     
+    //get all items from  dic format to item list
     private  func getItems( )-> [Item]{
         let dics = getItemsDic()
         var itemList : [Item] = [Item]()
@@ -58,9 +59,12 @@ class ModelManager  {
         return itemList
     }
     
+    //save dic list into a userdefaults
     private func saveItemsDic (_ itemsList :  [[String : String]] ) {
         UserDefaults.standard.setValue(itemsList, forKey: "0")
     }
+    
+    //get user default diccionary
     private func getItemsDic () ->[[String : String]] {
         if let itemDics = UserDefaults.standard.object(forKey: "0") as? [[String : String]] {
             return itemDics

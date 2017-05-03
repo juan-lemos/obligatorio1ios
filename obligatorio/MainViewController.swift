@@ -13,12 +13,12 @@ import UIKit
 
 class MainViewController: UIViewController , UITableViewDataSource, UITableViewDelegate{
     
-    @IBOutlet weak var table: UITableView!
+    @IBOutlet weak var table: UITableView! // tableview list of items
     
-    @IBOutlet weak var textsView: UIView!
+    @IBOutlet weak var textsView: UIView! //add message
     
     
-    
+    //change item state
     @IBAction func checkButtonAction(_ sender: UIButton) {
         let newState = !ModelManager.shared.itemsList[sender.tag].state
         let row = sender.tag
@@ -27,10 +27,12 @@ class MainViewController: UIViewController , UITableViewDataSource, UITableViewD
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        //when came to this view from other
             initPage()
     }
     
-    override func viewDidLoad() {
+    override func viewDidLoad() { //ONLY ONE TIME -- executed only the first time the view is load
+        //necessary for change the alpha values according with table content on disk
         super.viewDidLoad()
         
         if (ModelManager.shared.itemsList.count == 0){
@@ -52,7 +54,7 @@ class MainViewController: UIViewController , UITableViewDataSource, UITableViewD
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func confirmDelete(_ sender: Any) {
+    @IBAction func confirmDelete(_ sender: Any) { //delete all items message pop up
         let alert = UIAlertController(title: "Delete list", message: "Are you sure?", preferredStyle: UIAlertControllerStyle.alert)
         // add the actions (buttons)
         alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: { action in
@@ -74,6 +76,7 @@ class MainViewController: UIViewController , UITableViewDataSource, UITableViewD
         return ModelManager.shared.itemsList.count
     }
     
+    //load item into cells
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellOne = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemViewCellTable
         cellOne.name.text = ModelManager.shared.itemsList[indexPath.row].name
@@ -85,7 +88,7 @@ class MainViewController: UIViewController , UITableViewDataSource, UITableViewD
     }
     
     
-    func giveColorFromBool(_ state: Bool)->UIColor{
+    func giveColorFromBool(_ state: Bool)->UIColor{ //positive and negative color
         if(state){
             return UIColor.init(red: 0.69, green: 0.22, blue: 0, alpha: 1.0)
         }else{
@@ -95,6 +98,7 @@ class MainViewController: UIViewController , UITableViewDataSource, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        //DELETE BUTTON
         let deleteAction = UITableViewRowAction(style: .default, title: "Delete",
                                                 handler: { (action , indexPath) -> Void in
                                                     
@@ -102,30 +106,25 @@ class MainViewController: UIViewController , UITableViewDataSource, UITableViewD
                                                     self.animateUpdateTable()
                                                     self.initPage()
         })
-        
-        
-        // You can set its properties like normal button
         deleteAction.backgroundColor = UIColor.red
         
-        
-        
+        //EDIT BUTTON
         let editAction = UITableViewRowAction(style: .default, title: "Edit", handler: {(action, indexPath) -> Void in
-            self.performSegue(withIdentifier: "marketToAdd", sender: indexPath.row)
+            self.performSegue(withIdentifier: "marketToAdd", sender: indexPath.row) //call prepare method
         })
-        
         editAction.backgroundColor = UIColor.green
-        
+        //the order is important
         return [editAction,deleteAction]
     }
     
-    func animateUpdateTable(){
+    func animateUpdateTable(){ //animate row change or delete
         let range = NSMakeRange(0, self.table.numberOfSections)
         let sections = NSIndexSet(indexesIn: range)
         self.table.reloadSections(sections as IndexSet, with: .automatic)
     
     }
     
-    func initPage(){
+    func initPage(){ //animate when there is no element/// when add element in empty list // and when item change or deleted
         animateUpdateTable()
         if (ModelManager.shared.itemsList.count == 0){//if list empty
             UIView.animateKeyframes(withDuration: 1.0, delay: 0.0, options: [], animations: {
@@ -157,7 +156,7 @@ class MainViewController: UIViewController , UITableViewDataSource, UITableViewD
     
     
     
-    
+    //when press edit
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let addView = segue.destination as! AddItemViewController
         if let num = sender as? Int {

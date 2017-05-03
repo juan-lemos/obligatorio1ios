@@ -19,6 +19,7 @@ class Item {
         self.state = state
     }
     
+    //used to be save on userDefaults
     public static func toDictionary(_ item:Item)-> [String : String] {
         var dic = [String : String]()
         
@@ -33,6 +34,7 @@ class Item {
     return dic
     }
     
+    //parse Item from  userDefaults
     public static func toItem(_ dic:[String : String])->Item{
         
         let name = dic["name"]

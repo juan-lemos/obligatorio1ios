@@ -21,16 +21,13 @@ class AddItemViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if (elementNumber>=0){
+        if (elementNumber>=0){ // only when i used this view for edit
             productName.text = ModelManager.shared.itemsList[elementNumber].name
             productQuantity.text = String(ModelManager.shared.itemsList[elementNumber].number)
         }
         
+        //when tap outside texfield
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(AddItemViewController.dismissKeyboard))
-        
-        //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
-        //tap.cancelsTouchesInView = false
-        
         view.addGestureRecognizer(tap)
 
     }
@@ -43,17 +40,17 @@ class AddItemViewController: UIViewController {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
     }
-    
+    //save only when the values are OK
     @IBAction func doneButtonAction(_ sender: Any) {
         
         if let quantity = Int(productQuantity.text ?? "") {
             let quantityInt64 = Int64(quantity)
-            if (elementNumber>=0){
+            if (elementNumber>=0){//when edit
                 let editItem : Item  = ModelManager.shared.itemsList[elementNumber]
                 editItem.name=productName.text!
                 editItem.number=quantityInt64
                 ModelManager.shared.updateItem(item: editItem, atIndex: elementNumber)
-            }else{
+            }else{//when create
                 ModelManager.shared.addItem(item: Item(name : productName.text!, number : quantityInt64, state : false))
             }
             self.navigationController?.popViewController(animated: true)
